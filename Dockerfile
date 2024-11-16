@@ -15,6 +15,7 @@ RUN apt update && \
     apt install -y \
       python3-dev \
       python3-pip \
+      gosu \
       fonts-dejavu-core \
       rsync \
       git \
@@ -52,6 +53,15 @@ COPY start.sh rp_handler.py ./
 COPY schemas /schemas
 
 RUN git clone --depth=1 https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
+
+WORKDIR /stable-diffusion-webui
+
+# Install dependencies
+RUN pip install -r requirements.txt && \
+    pip install -r requirements_versions.txt && \
+    pip install -r requirements_npu.txt
+
+WORKDIR /
 
 # Start the container
 RUN chmod +x /start.sh

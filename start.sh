@@ -13,10 +13,15 @@ if [ ! -d "/workspace/stable-diffusion-webui" ]; then
     cp -r /stable-diffusion-webui /workspace/
 fi
 
+adduser --disabled-password --gecos "" webuiuser && \
+usermod -aG sudo webuiuser
+
 export LD_PRELOAD="${TCMALLOC}"
 export PYTHONUNBUFFERED=true
 export HF_HOME="/workspace"
-python3 /workspace/stable-diffusion-webui/webui.py \
+
+exec gosu webuiuser python3 /workspace/stable-diffusion-webui/webui.py \
+  --use_venv=0 \
   --xformers \
   --no-half-vae \
   --skip-python-version-check \
