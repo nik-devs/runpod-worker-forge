@@ -15,7 +15,6 @@ RUN apt update && \
     apt install -y \
       python3-dev \
       python3-pip \
-      gosu \
       fonts-dejavu-core \
       rsync \
       git \
@@ -44,24 +43,9 @@ RUN ln -s /usr/bin/python3.10 /usr/bin/python
 # Install Worker dependencies
 RUN pip install requests runpod huggingface_hub
 
-# Install Torch and xformers
-RUN pip install --no-cache-dir torch==2.1.2+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-RUN pip install --no-cache-dir xformers==0.0.23.post1 --index-url https://download.pytorch.org/whl/cu118
-
 # Add RunPod Handler and Docker container start script
 COPY start.sh rp_handler.py ./
 COPY schemas /schemas
-
-RUN git clone --depth=1 https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
-
-WORKDIR /stable-diffusion-webui
-
-# Install dependencies
-RUN pip install -r requirements.txt && \
-    pip install -r requirements_versions.txt && \
-    pip install -r requirements_npu.txt
-
-WORKDIR /
 
 # Start the container
 RUN chmod +x /start.sh
