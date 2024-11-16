@@ -7,11 +7,16 @@ rm -rf /workspace && \
   ln -s /runpod-volume /workspace
 
 mkdir -p /workspace/logs
+touch /workspace/logs/webui.log
+
+if [ ! -d "/workspace/stable-diffusion-webui" ]; then
+    cp -r /stable-diffusion-webui /workspace/
+fi
 
 export LD_PRELOAD="${TCMALLOC}"
 export PYTHONUNBUFFERED=true
 export HF_HOME="/workspace"
-python3 /stable-diffusion-webui/webui.py \
+python3 /workspace/stable-diffusion-webui/webui.py \
   --xformers \
   --no-half-vae \
   --skip-python-version-check \
