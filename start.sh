@@ -2,14 +2,16 @@
 
 echo "Worker Initiated"
 
-# echo "Symlinking files from Network Volume"
-# rm -rf /workspace && \
-#   ln -s /runpod-volume /workspace
+echo "Symlinking files from Network Volume"
+rm -rf /workspace && \
+  ln -s /runpod-volume /workspace
+
+mkdir -p /workspace/logs
 
 export LD_PRELOAD="${TCMALLOC}"
 export PYTHONUNBUFFERED=true
 export HF_HOME="/workspace"
-python3 /workspace/stable-diffusion-webui/webui.py \
+python3 /stable-diffusion-webui/webui.py \
   --xformers \
   --no-half-vae \
   --skip-python-version-check \
