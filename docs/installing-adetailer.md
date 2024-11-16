@@ -18,7 +18,7 @@
    # Update A1111 configs
    cd /workspace/stable-diffusion-webui
    rm webui-user.sh config.json ui-config.json
-   wget https://raw.githubusercontent.com/ashleykleynhans/runpod-worker-a1111/main/webui-user.sh
-   wget https://raw.githubusercontent.com/ashleykleynhans/runpod-worker-a1111/main/config.json
-   wget https://raw.githubusercontent.com/ashleykleynhans/runpod-worker-a1111/main/ui-config.json
+   wget https://raw.githubusercontent.com/nik-devs/runpod-worker-a1111/main/webui-user.sh
+   wget https://raw.githubusercontent.com/nik-devs/runpod-worker-a1111/main/config.json
+   wget https://raw.githubusercontent.com/nik-devs/runpod-worker-a1111/main/ui-config.json
    ```
