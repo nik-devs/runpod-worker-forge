@@ -67,15 +67,16 @@ TXT2IMG_SCHEMA = {
     'scheduler': {
         'type': str,
         'required': False,
-        # 'default': 'Euler a',
-        # 'constraints': lambda scheduler: scheduler in [
-        #     'automatic',
-        #     'uniform',
-        #     'karras',
-        #     'exponential',
-        #     'polyexponential',
-        #     'sgm_uniform'
-        # ]
+        'default': 'Euler a',
+        'constraints': lambda scheduler: scheduler in [
+            'Euler a',  # disable
+            'automatic',
+            'uniform',
+            'karras',
+            'exponential',
+            'polyexponential',
+            'sgm_uniform'
+        ]
     },
     'batch_size': {
         'type': int,

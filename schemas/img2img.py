@@ -67,15 +67,16 @@ IMG2IMG_SCHEMA = {
     'scheduler': {
         'type': str,
         'required': False,
-        # 'default': 'Euler a',
-        # 'constraints': lambda scheduler: scheduler in [
-        #     'automatic',
-        #     'uniform',
-        #     'karras',
-        #     'exponential',
-        #     'polyexponential',
-        #     'sgm_uniform'
-        # ]
+        'default': 'Euler a',
+        'constraints': lambda scheduler: scheduler in [
+            'Euler a',  # disable
+            'automatic',
+            'uniform',
+            'karras',
+            'exponential',
+            'polyexponential',
+            'sgm_uniform'
+        ]
     },
     'batch_size': {
         'type': int,
@@ -206,10 +207,10 @@ IMG2IMG_SCHEMA = {
         'required': False,
         'default': 0
     },
-    'mask': {
+    'mask_image': {
         'type': str,
         'required': False,
-        # 'default': ''
+        'default': ''
     },
     'mask_blur_x': {
         'type': int,

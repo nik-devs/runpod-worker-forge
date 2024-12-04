@@ -99,9 +99,15 @@ def validate_payload(job):
     elif endpoint == 'sdapi/v1/txt2img':
         logger.info(f'Validating /{endpoint} payload', job['id'])
         validated_input = validate(payload, TXT2IMG_SCHEMA)
+        if validated_input.get('sampler_name') == 'Euler a' and 'scheduler' in validated_input:
+            del validated_input['scheduler']
     elif endpoint == 'sdapi/v1/img2img':
         logger.info(f'Validating /{endpoint} payload', job['id'])
         validated_input = validate(payload, IMG2IMG_SCHEMA)
+        if validated_input.get('sampler_name') == 'Euler a' and 'scheduler' in validated_input:
+            del validated_input['scheduler']
+        if 'mask_image' in validated_input and validated_input['mask_image'] != '':
+            validated_input['mask'] = validated_input.pop('mask_image')
     elif endpoint == 'sdapi/v1/interrogate' and method == 'POST':
         logger.info(f'Validating /{endpoint} payload', job['id'])
         validated_input = validate(payload, INTERROGATE_SCHEMA)
