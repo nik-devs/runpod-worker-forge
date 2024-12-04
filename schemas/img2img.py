@@ -255,7 +255,7 @@ IMG2IMG_SCHEMA = {
     'latent_mask': {
         'type': str,
         'required': False,
-        'default': ''
+        'default': None
     },
     'sampler_index': {
         'type': str,
