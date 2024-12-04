@@ -203,13 +203,13 @@ def handler(job):
     else:
         payload = validated_payload
 
-    # # Fix payload
-    # if payload.get('sampler_name') == 'Euler a' and 'scheduler' in payload:
-    #     del payload['scheduler']
+    # Fix payload
+    if payload.get('sampler_name') == 'Euler a' and 'scheduler' in payload:
+        del payload['scheduler']
     # if 'mask_image' in payload:
-    #     logger.info(f'Mask Image Len: {len(payload['mask_image'])}', job['id'])
-    # if 'mask_image' in payload and payload['mask_image']:
-    #     payload['mask'] = payload.pop('mask_image')
+    #     logger.info(f"Mask Image Len: {len(payload['mask_image'])}", job['id'])
+    if 'mask_image' in payload and payload['mask_image']:
+        payload['mask'] = payload.pop('mask_image')
 
     try:
         logger.info(f'Sending {method} request to: /{endpoint}', job['id'])
