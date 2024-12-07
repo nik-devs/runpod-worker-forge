@@ -52,7 +52,7 @@ RUN pip3 install -r requirements.txt
 # Clone Forge
 RUN git clone --depth=1 https://github.com/lllyasviel/stable-diffusion-webui-forge.git && \
     cd stable-diffusion-webui-forge && \
-    git checkout 85a7db3c0f076d186e630763139d082d31609dc0
+    git checkout 31d26adba316ce0f851f2f46be98e5f8f8ce6a38
 
 WORKDIR /stable-diffusion-webui-forge
 
