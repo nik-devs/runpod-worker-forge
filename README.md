@@ -1,45 +1,17 @@
 <div align="center">
 
-# A1111 Stable Diffusion | RunPod Serverless Worker
+# Forge Stable Diffusion | RunPod Serverless Worker
 
-This is the source code for a [RunPod](https://runpod.io?ref=2xxro4sy)
-Serverless worker that uses the [Automatic1111 Stable Diffusion API](
-https://github.com/AUTOMATIC1111/stable-diffusion-webui) for inference.
+This is the source code for a [RunPod](https://runpod.io)
+Serverless worker that uses the [Forge Stable Diffusion API](
+https://github.com/lllyasviel/stable-diffusion-webui-forge) for inference.
 
 </div>
-
-> [!IMPORTANT]
-> A1111 1.9.0 API format has changed dramatically and is not
-> backwards compatible. You will need to ensure that you check
-> out the `2.5.0` release of this worker if you require backwards
-> compatibility, and also ensure that you are using A1111 1.8.0
-> and not version 1.9.0.
 
 ## Model
 
 The model(s) for inference will be loaded from a RunPod
 Network Volume.
-
-## Extensions
-
-This worker includes the following A1111 extensions:
-
-1. [ControlNet](https://github.com/Mikubill/sd-webui-controlnet)
-2. [ReActor](https://github.com/Gourieff/sd-webui-reactor)
-3. [ADetailer](https://github.com/Bing-su/adetailer)
-
-## Testing
-
-1. [Local Testing](docs/testing/local.md)
-2. [RunPod Testing](docs/testing/runpod.md)
-
-## Installing, Building and Deploying the Serverless Worker
-
-1. [Install Automatic1111 Web UI on your Network Volume](
-docs/installing.md)
-2. [Building the Docker image](docs/building.md)
-3. [Deploying on RunPod Serveless](docs/deploying.md)
-4. [Frequently Asked Questions](docs/faq.md)
 
 ## RunPod API Endpoint
 
@@ -101,10 +73,6 @@ was successful.
 * [File Download](docs/api/helper/download.md)
 * [Huggingface Sync](docs/api/helper/sync.md)
 
-### Optional Webhook Callbacks
-
-You can optionally [Enable a Webhook](docs/api/helper/webhook.md).
-
 ### Endpoint Status Codes
 
 | Status      | Description                                                                                                                     |
@@ -124,20 +92,3 @@ Python library.  It defines a function `handler(event)` that takes an
 API request (event), runs the inference using the model(s) from your
 Network Volume with the `input`, and returns the `output`
 in the JSON response.
-
-## Acknowledgements
-- [Ashley Kleynhans](https://github.com/ashleykleynhans/)
-- [Automatic1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
-- [Generative Labs YouTube Tutorials](https://www.youtube.com/@generativelabs)
-
-## Additional Resources
-
-- [Postman Collection for this Worker](RunPod_A1111_Worker.postman_collection.json)
-- [Generative Labs YouTube Tutorials](https://www.youtube.com/@generativelabs)
-- [Getting Started With RunPod Serverless](https://trapdoor.cloud/getting-started-with-runpod-serverless/)
-- [Serverless | Create a Custom Basic API](https://blog.runpod.io/serverless-create-a-basic-api/)
-
-## Community and Contributing
-
-Pull requests and issues on [GitHub](https://github.com/generativelabs/runpod-worker-a1111)
-are welcome. Bug fixes and new features are encouraged.

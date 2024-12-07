@@ -44,6 +44,18 @@ RUN ln -s /usr/bin/python3.10 /usr/bin/python
 # Install Worker dependencies
 RUN pip install requests runpod huggingface_hub
 
+# Clone Forge and create venv
+RUN git clone --depth=1 --branch=85a7db3c0f076d186e630763139d082d31609dc0 https://github.com/lllyasviel/stable-diffusion-webui-forge.git && \
+    python3 -m venv /venv && \
+    . /venv/bin/activate && \
+    cd stable-diffusion-webui-forge && \
+    pip3 install --no-cache-dir torch==2.1.2+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
+    pip3 install --no-cache-dir xformers==0.0.23.post1 --index-url https://download.pytorch.org/whl/cu118 && \
+    pip3 install -r requirements.txt
+
+# Copy config files
+COPY webui-user.sh config.json ui-config.json /stable-diffusion-webui-forge/
+
 # Add RunPod Handler and Docker container start script
 COPY start.sh rp_handler.py ./
 COPY schemas /schemas
