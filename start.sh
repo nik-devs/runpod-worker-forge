@@ -7,6 +7,11 @@ if [ ! -d /workspace ]; then
     ln -s /runpod-volume /workspace
 fi
 
+# Create logs directory
+if [ ! -d /workspace/logs ]; then
+    mkdir -p /workspace/logs
+fi
+
 # Copy models to workspace if needed
 if [ ! -d /workspace/models ]; then
     cp -r /stable-diffusion-webui-forge/models /workspace/
