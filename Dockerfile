@@ -44,6 +44,9 @@ RUN ln -s /usr/bin/python3.10 /usr/bin/python
 # Install Worker dependencies
 RUN pip install requests runpod huggingface_hub
 
+# Install other requirements
+RUN pip3 install -r requirements.txt
+
 # Clone Forge
 RUN git clone --depth=1 https://github.com/lllyasviel/stable-diffusion-webui-forge.git && \
     cd stable-diffusion-webui-forge && \
@@ -57,8 +60,8 @@ RUN pip3 install --no-cache-dir torch==2.1.2+cu118 torchvision torchaudio --inde
 # Install xformers
 RUN pip3 install --no-cache-dir xformers==0.0.23.post1 --index-url https://download.pytorch.org/whl/cu118
 
-# Install other requirements
-RUN pip3 install -r requirements.txt
+# Install requirements_versions.txt
+RUN pip3 install -r requirements_versions.txt
 
 WORKDIR /
 
