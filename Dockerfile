@@ -49,22 +49,18 @@ RUN git clone --depth=1 https://github.com/lllyasviel/stable-diffusion-webui-for
     cd stable-diffusion-webui-forge && \
     git checkout 85a7db3c0f076d186e630763139d082d31609dc0
 
-# Create and activate venv
-RUN python3 -m venv /venv
+WORKDIR /stable-diffusion-webui-forge
 
 # Install PyTorch
-RUN . /venv/bin/activate && \
-    cd stable-diffusion-webui-forge && \
-    pip3 install --no-cache-dir torch==2.1.2+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+RUN pip3 install --no-cache-dir torch==2.1.2+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
 # Install xformers
-RUN . /venv/bin/activate && \
-    pip3 install --no-cache-dir xformers==0.0.23.post1 --index-url https://download.pytorch.org/whl/cu118
+RUN pip3 install --no-cache-dir xformers==0.0.23.post1 --index-url https://download.pytorch.org/whl/cu118
 
 # Install other requirements
-RUN . /venv/bin/activate && \
-    cd stable-diffusion-webui-forge && \
-    pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt
+
+WORKDIR /
 
 # Copy config files
 COPY webui-user.sh config.json ui-config.json /stable-diffusion-webui-forge/
