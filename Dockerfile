@@ -45,7 +45,7 @@ RUN ln -s /usr/bin/python3.10 /usr/bin/python
 RUN pip install requests runpod huggingface_hub
 
 # Clone Forge and create venv
-RUN git clone --depth=1 --branch=85a7db3c0f076d186e630763139d082d31609dc0 https://github.com/lllyasviel/stable-diffusion-webui-forge.git && \
+RUN git clone --depth=1 --rev=85a7db3c0f076d186e630763139d082d31609dc0 https://github.com/lllyasviel/stable-diffusion-webui-forge.git && \
     python3 -m venv /venv && \
     . /venv/bin/activate && \
     cd stable-diffusion-webui-forge && \
