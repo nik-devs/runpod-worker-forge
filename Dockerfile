@@ -50,7 +50,7 @@ RUN pip install requests runpod huggingface_hub
 RUN pip3 install -r requirements.txt
 
 # Clone Forge
-RUN git clone --depth=1 https://github.com/lllyasviel/stable-diffusion-webui-forge.git && \
+RUN git clone --depth=1000 https://github.com/lllyasviel/stable-diffusion-webui-forge.git && \
     cd stable-diffusion-webui-forge && \
     git reset --hard e3522c89191a01e0dd5855abbfd15cb685be3634
 
