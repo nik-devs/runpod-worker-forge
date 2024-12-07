@@ -9,6 +9,8 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 WORKDIR /
 
+COPY requirements.txt ./
+
 # Upgrade apt packages and install required dependencies
 RUN apt update && \
     apt upgrade -y && \
