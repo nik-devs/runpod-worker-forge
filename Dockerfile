@@ -52,7 +52,7 @@ RUN pip3 install -r requirements.txt
 # Clone Forge
 RUN git clone --depth=1000 https://github.com/lllyasviel/stable-diffusion-webui-forge.git && \
     cd stable-diffusion-webui-forge && \
-    git reset --hard e3522c89191a01e0dd5855abbfd15cb685be3634
+    git reset --hard 85a7db3c0f076d186e630763139d082d31609dc0
 
 WORKDIR /stable-diffusion-webui-forge
 
@@ -64,6 +64,9 @@ RUN pip3 install --no-cache-dir xformers==0.0.23.post1 --index-url https://downl
 
 # Install requirements_versions.txt
 RUN pip3 install -r requirements_versions.txt
+
+# Установка модулей через launch.py
+RUN python launch.py --skip-torch-cuda-test --skip-python-version-check --no-download-sd-model --exit
 
 WORKDIR /
 
