@@ -297,6 +297,11 @@ TXT2IMG_SCHEMA = {
         'required': False,
         'default': []
     },
+    'hr_additional_modules': {
+        'type': list,
+        'required': False,
+        'default': []
+    },
     'send_images': {
         'type': bool,
         'required': False,

@@ -22,7 +22,7 @@
     "controlnet_photopea_warning": true,
     "controlnet_input_thumbnail": true,
     "sd_checkpoint_hash": "67ab2fd8ec439a89b3fedb15cc65f54336af163c7eb5e4f2acc98f090a29b0b3",
-    "sd_model_checkpoint": "ponyDiffusionV6XL_v6StartWithThisOne.safetensors [67ab2fd8ec]",
+    "sd_model_checkpoint": "ponyDiffusionV6XL_v6StartWithThisOne.safetensors",
     "outdir_samples": "",
     "outdir_txt2img_samples": "output/txt2img-images",
     "outdir_img2img_samples": "output/img2img-images",
