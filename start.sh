@@ -17,11 +17,22 @@ if [ ! -d /workspace/models ]; then
     cp -r /stable-diffusion-webui-forge/models /workspace/
 fi
 
+# Copy embeddings to workspace if needed
+if [ ! -d /workspace/embeddings ]; then
+    cp -r /stable-diffusion-webui-forge/embeddings /workspace/
+fi
+
 # Create symlink for models directory
 if [ -d /stable-diffusion-webui-forge/models ]; then
     rm -rf /stable-diffusion-webui-forge/models
 fi
 ln -s /workspace/models /stable-diffusion-webui-forge/models
+
+# Create symlink for embeddings directory
+if [ -d /stable-diffusion-webui-forge/embeddings ]; then
+    rm -rf /stable-diffusion-webui-forge/embeddings
+fi
+ln -s /workspace/embeddings /stable-diffusion-webui-forge/embeddings
 
 echo "Starting WebUI API"
 TCMALLOC="$(ldconfig -p | grep -Po "libtcmalloc.so.\d" | head -n 1)"
